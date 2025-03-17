@@ -36,14 +36,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: CircularProgressIndicator(),
                 ),
               )
-              : ListView.builder(
+              : usersList.isNotEmpty
+              ? ListView.builder(
                 itemBuilder:
                     (context, index) => ListTile(
                       title: Text("${usersList[index].userId}"),
                       subtitle: Text(usersList[index].title),
                     ),
                 itemCount: usersList.length,
-              ),
+              )
+              : Text("No data available"),
     );
   }
 }
